@@ -49,7 +49,7 @@ after = 110
 tol = 0.05
 cpuCount = os.cpu_count() 
 import psutil
-import cv2
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -1154,5 +1154,6 @@ def update_new_bin1(old_bin):
     ind_min = np.append(np.arange(begin, last, step = 1), last)
     update_bin = ind_min*7500
     return(update_bin)
+
 
 
