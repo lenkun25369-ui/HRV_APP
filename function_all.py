@@ -19,7 +19,7 @@ import neurokit2 as nk
 import csv
 from collections import Counter
 import warnings
-from IPython.display import display
+
 import shutil
 import posixpath
 import pyhrv
@@ -1154,4 +1154,5 @@ def update_new_bin1(old_bin):
     ind_min = np.append(np.arange(begin, last, step = 1), last)
     update_bin = ind_min*7500
     return(update_bin)
+
 
