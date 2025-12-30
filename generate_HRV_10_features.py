@@ -2,14 +2,21 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import types
 
-# Force headless matplotlib
+# ---- Force headless matplotlib ----
 os.environ["MPLBACKEND"] = "Agg"
 
-# ---- BLOCK tkinter completely (biosppy hard-imports it) ----
+# ---- Completely disable biosppy plotting modules ----
+fake_plotting = types.ModuleType("biosppy.inter_plotting")
+sys.modules["biosppy.inter_plotting"] = fake_plotting
+sys.modules["biosppy.inter_plotting.ecg"] = fake_plotting
+sys.modules["biosppy.inter_plotting.acc"] = fake_plotting
+
+# ---- Also block tkinter just in case ----
 sys.modules["tkinter"] = None
 sys.modules["_tkinter"] = None
-import sys
+
 
 import gc
 import warnings
