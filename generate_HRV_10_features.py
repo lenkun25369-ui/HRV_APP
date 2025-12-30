@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-import sys
 import os
+os.environ["MPLBACKEND"] = "Agg"
+import sys
+
 import gc
 import warnings
 from collections import Counter
