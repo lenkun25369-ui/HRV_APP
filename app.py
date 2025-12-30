@@ -51,7 +51,7 @@ if run_btn:
 
         with st.spinner("Generating HRV features..."):
             # 你已把 generate script 改成 CLI：python generate_hrv_10_features.py <ecg_csv> <h0_csv>
-            subprocess.check_call(["python", "generate_hrv_10_features.py", ecg_csv, h0_csv])
+            subprocess.check_call(["python", "generate_HRV_10_features.py", ecg_csv, h0_csv])
 
         with st.spinner("Predicting shock risk..."):
             preds = predict_shock(h0_csv)  # numpy array
