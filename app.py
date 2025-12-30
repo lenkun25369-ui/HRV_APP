@@ -51,7 +51,26 @@ if run_btn:
 
         with st.spinner("Generating HRV features..."):
             # 你已把 generate script 改成 CLI：python generate_hrv_10_features.py <ecg_csv> <h0_csv>
-            subprocess.check_call(["python", "generate_HRV_10_features.py", ecg_csv, h0_csv])
+            proc = subprocess.run(
+                [
+                    "python",
+                    "generate_HRV_10_features.py",
+                    ecg_csv,
+                    h0_csv
+                ],
+                capture_output=True,
+                text=True
+            )
+            
+            st.subheader("HRV stdout")
+            st.code(proc.stdout)
+            
+            st.subheader("HRV stderr")
+            st.code(proc.stderr)
+            
+            if proc.returncode != 0:
+                raise RuntimeError("generate_HRV_10_features.py failed")
+
 
         with st.spinner("Predicting shock risk..."):
             preds = predict_shock(h0_csv)  # numpy array
