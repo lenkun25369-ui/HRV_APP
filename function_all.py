@@ -10,7 +10,7 @@ from keras import backend as K
 from keras.models import load_model
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.preprocessing import RobustScaler
-import matplotlib.pyplot as plt
+#import#import matplotlib.pyplot
 from scipy.signal import resample
 import glob
 import pywt
@@ -1154,6 +1154,7 @@ def update_new_bin1(old_bin):
     ind_min = np.append(np.arange(begin, last, step = 1), last)
     update_bin = ind_min*7500
     return(update_bin)
+
 
 
 
