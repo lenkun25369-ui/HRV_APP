@@ -2,8 +2,10 @@
 import os
 import pandas as pd
 import xgboost as xgb
+from typing import Optional
 
-def predict_shock(h0_csv_path: str, xgb_model_path: str | None = None):
+def predict_shock(h0_csv_path: str, xgb_model_path: Optional[str] = None):
+:
     if xgb_model_path is None:
         xgb_model_path = os.getenv("XGB_MODEL_PATH", "models/xgb_model.json")
 
