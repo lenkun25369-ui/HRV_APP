@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
+import sys
+
+# Force headless matplotlib
 os.environ["MPLBACKEND"] = "Agg"
+
+# ---- BLOCK tkinter completely (biosppy hard-imports it) ----
+sys.modules["tkinter"] = None
+sys.modules["_tkinter"] = None
 import sys
 
 import gc
