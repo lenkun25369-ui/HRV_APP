@@ -251,8 +251,8 @@ h0 = h0.iloc[1:]
 # In[21]:
 
 
-h0.to_csv("h0.csv", index=False)
-
+# h0.to_csv("h0.csv", index=False)
+h0.to_csv(sys.argv[2], index=False)
 
 # In[19]:
 
