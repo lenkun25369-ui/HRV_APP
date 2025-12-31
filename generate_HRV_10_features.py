@@ -3,10 +3,21 @@
 
 # In[4]:
 import os
+import sys
 os.environ["MPLBACKEND"] = "Agg"
 
+# ---- Completely disable biosppy plotting modules ----
+fake_plotting = types.ModuleType("biosppy.inter_plotting")
+sys.modules["biosppy.inter_plotting"] = fake_plotting
+sys.modules["biosppy.inter_plotting.ecg"] = fake_plotting
+sys.modules["biosppy.inter_plotting.acc"] = fake_plotting
+
+# ---- Also block tkinter just in case ----
+sys.modules["tkinter"] = None
+sys.modules["_tkinter"] = None
+
 import pickle
-import sys
+
 import numpy as np
 
 import scipy.signal as sg
