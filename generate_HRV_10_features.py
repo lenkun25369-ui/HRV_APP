@@ -4,6 +4,8 @@
 # In[4]:
 import os
 import sys
+import types
+
 os.environ["MPLBACKEND"] = "Agg"
 
 # ---- Completely disable biosppy plotting modules ----
