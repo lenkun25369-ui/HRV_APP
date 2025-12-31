@@ -54,6 +54,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 def auto_ar_predict(X, max_lag=20, criterion='aic'):
     X = np.asarray(X).flatten()
     best_score = np.inf
@@ -918,7 +919,7 @@ def ECG_data_extend1(data):
 	
 	
 #  update funciton-normal
-def hrvtransform2_only_normal_ECG_filter_hr(hrdata1,new_test,fs,settings_time,settings_welch,settings_ar,settings_lomb,settings_nonlinear):
+def hrvtransform2_only_normal_ECG_filter_hr(hrdata1,new_test,fs,hrv1,settings_time,settings_welch,settings_ar,settings_lomb,settings_nonlinear):
 
         #from biosppy.signals import ecg
         hrdata1 = hrdata1[~pd.isnull(hrdata1)]
@@ -1059,10 +1060,7 @@ def hrvtransform2_only_normal_ECG_filter_hr(hrdata1,new_test,fs,settings_time,se
         hrv0=hrv0.transpose()
 
         #hrv1=hrv1.append(hrv0)
-        if hrv1 is None:
-            hrv1 = hrv0.copy()
-        else:
-            hrv1 = pd.concat([hrv1, hrv0], ignore_index=True)
+        hrv1=pd.concat([hrv1,hrv0], ignore_index=True)
         hrv1.columns=['aFdP', 'fFdP', 'ARerr', 'DFA.Alpha.1', 'Mean.rate','Poincar..SD2', 'shannEn', 'LF.HF.ratio.LombScargle']
         
         
@@ -1157,9 +1155,4 @@ def update_new_bin1(old_bin):
     ind_min = np.append(np.arange(begin, last, step = 1), last)
     update_bin = ind_min*7500
     return(update_bin)
-
-
-
-
-
 
