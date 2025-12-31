@@ -2,12 +2,13 @@
 # coding: utf-8
 
 # In[4]:
-
+import os
+os.environ["MPLBACKEND"] = "Agg"
 
 import pickle
 import sys
 import numpy as np
-import os
+
 import scipy.signal as sg
 import wfdb
 from tqdm import tqdm
@@ -25,7 +26,7 @@ import neurokit2 as nk
 import csv
 from collections import Counter
 import warnings
-from IPython.display import display
+#from IPython.display import display
 import shutil
 import posixpath
 import pyhrv
@@ -54,10 +55,10 @@ after = 110
 tol = 0.05
 cpuCount = os.cpu_count() 
 import psutil
-import cv2
+#import#imp
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 # import rpy2.robjects as robjects
 # from rpy2.robjects import pandas2ri
 # from rpy2.robjects.packages import importr
@@ -180,7 +181,7 @@ model
 
 # input raw ECG data
 import pandas as pd
-df = pd.read_csv('ECG_5min.csv')
+df = pd.read_csv(sys.argv[1])
 df
 
 
