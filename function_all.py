@@ -1059,7 +1059,10 @@ def hrvtransform2_only_normal_ECG_filter_hr(hrdata1,new_test,fs,settings_time,se
         hrv0=hrv0.transpose()
 
         #hrv1=hrv1.append(hrv0)
-        hrv1=pd.concat([hrv1,hrv0], ignore_index=True)
+        if hrv1 is None:
+            hrv1 = hrv0.copy()
+        else:
+            hrv1 = pd.concat([hrv1, hrv0], ignore_index=True)
         hrv1.columns=['aFdP', 'fFdP', 'ARerr', 'DFA.Alpha.1', 'Mean.rate','Poincar..SD2', 'shannEn', 'LF.HF.ratio.LombScargle']
         
         
@@ -1154,6 +1157,7 @@ def update_new_bin1(old_bin):
     ind_min = np.append(np.arange(begin, last, step = 1), last)
     update_bin = ind_min*7500
     return(update_bin)
+
 
 
 
