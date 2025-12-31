@@ -135,6 +135,7 @@ def main(ecg_csv_path: str, out_csv_path: str):
         # ---- HRV features ----
         hrv_part = hrvtransform2_only_normal_ECG_filter_hr(
             hrdata, preds, fs,
+            hrv1=None,
             settings_time=None,
             settings_welch=None,
             settings_ar=None,
